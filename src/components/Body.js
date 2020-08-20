@@ -8,6 +8,7 @@ import Twitter from './Twitter';
 import Links from './Links';
 import Icon from './images/flame'
 import MoreInfo from './MoreInfo';
+import Header from './Header';
 
 const Body = (props) => {
   {/*Header - Functionality*/}
@@ -56,10 +57,8 @@ const Body = (props) => {
           <div><a href='https://www.tokensofbabel.com/' target='_blank' rel='noopener noreferrer'><img className="headLogo" alt="TOB Logo" src={logo} /></a></div>
         </div>
       </div>
-      <div className='qDiv'>
 
-      </div>
-
+      <Header/>
       <MoreInfo/>
 
       {/* TOKEN BLOCK*/}

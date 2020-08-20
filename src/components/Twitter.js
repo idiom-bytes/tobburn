@@ -3,8 +3,6 @@ import './Twitter.css';
 import { TwitterFollowButton, TwitterMentionButton } from 'react-twitter-embed';
 
 function Twitter() {
-
-
   return(
     <div className='twitterDiv'>
       <p className='socialName'>Tokens of Babel creator @burn_the_state on Twitter</p>
