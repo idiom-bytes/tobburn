@@ -1,0 +1,19 @@
+.twitterDiv {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.socialName {
+  color:#fc8f53;
+  font-size: 1.75rem;
+  width:85%;
+  margin: auto;
+  margin-bottom:1%;
+}
+
+@media only screen and (min-width:768px) {
+  .twitterDiv {
+    width:80%;
+    margin: auto;
+  }
+}

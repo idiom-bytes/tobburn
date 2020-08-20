@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fffbf0;
+  color: #333333;
+  margin-bottom: 100px;
+  line-height:1.3;
+  font-family: 'Montserrat', sans-serif;
+  animation: fadeIn ease 2.5s;
+  -webkit-animation: fadeIn ease 2.5s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+
+div {
+  text-align:center;
+}
+
+.torch{
+  width:50%;
+  height:auto;
+}

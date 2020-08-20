@@ -1,0 +1,23 @@
+.audioDiv {
+
+
+
+}
+.audio-player {
+  padding: 2%;
+  margin:auto;
+  border-radius: 2rem;
+  font-weight: 600;
+  background: #f1f3f4;
+  font-weight:600;
+  height:54px;
+}
+.slider {
+
+}
+
+@media only screen and (min-width:768px) {
+  .audio-player {
+    padding:1%;
+  }
+}

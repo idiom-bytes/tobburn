@@ -1,0 +1,115 @@
+
+.headLogo {
+  /* border-radius:.5rem; */
+  width:60%;
+}
+.head {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top:8%;
+}
+.burnDiv {
+  margin-bottom: 1%;
+}
+.titleP {
+  font-size: 1.6rem;
+  font-weight:600;
+}
+.subTitleP {
+  font-size:1.25rem;
+  font-weight:550;
+}
+.socialDiv {
+  margin-top: 10%;
+}
+.qDiv {
+  width:90%;
+  margin: auto;
+  margin-top:3%;
+}
+.quote {
+  font-size:1.2rem;
+  font-weight: 600;
+  width:90%;
+  margin: auto;
+}
+.finalDiv {
+  margin-top:10%;
+}
+.swapDiv {
+  margin-top:3%;
+}
+.uniswapLink {
+  padding: 1.5% 2%;
+  color: #333333;
+  font-weight:600;
+  z-index:1000;
+  border-bottom:2px solid #333333;
+  border-left:2px solid #333333;
+  transition:.25s;
+  text-decoration: none;
+  font-size:1.45rem;
+  margin: 2%;
+  transition: all .3s;
+}
+.uniswapLink:hover {
+  border-top:2px solid #333333;
+  border-right:2px solid #333333;
+}
+.footDiv {
+  color: #333333;
+  line-height: 3;
+  width:90%;
+  margin: auto;
+  margin-top: 8%;
+}
+.attLink, .cp {
+  color: #333333;
+  font-size:1.05rem;
+  text-decoration: underline;
+  transition:all .3s;
+}
+.attLink:hover {
+  color:lightblue;
+}
+@media only screen and (min-width:768px) {
+  .finalDiv {
+    margin-top:5%;
+  }
+  .attLink {
+    font-size: 1.25rem;
+  }
+  .headLogo {
+    width:50%;
+  }
+  .head {
+    margin-top:4%;
+  }
+  .finalDiv {
+    margin-top: 12%;
+  }
+  .quote {
+    font-size:1.15rem;
+  }
+}
+@media only screen and (min-width:1000px) {
+  .attLink {
+    font-size: 1.35rem;
+  }
+  .finalDiv {
+    margin-top:3%;
+  }
+  .head {
+    margin-top:2%;
+  }
+  .finalDiv {
+    margin-top: 15%;
+  }
+  .headLogo {
+    width:40%;
+  }
+  .quote {
+    font-size:1.35rem;
+    width: 65%;
+  }
+}
