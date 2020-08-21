@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "tobburn"
+    "default": "tobburn",
+    "prod": "tobburn"
   }
 }

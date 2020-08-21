@@ -96,7 +96,7 @@ const Body = (props) => {
             <a className='cp' href='https://twitter.com/GStauffy' target='_blank' rel='noopener noreferrer'>OG Code by GS</a><br/>
 
             <a href='https://www.twitter.com/idiom_bytes' target='_blank' rel='noopener noreferrer'><img className="twitter_img" alt="Idiom" src={twitter_dp}/></a><br/>
-            $TOB port by Idiom<br/>
+            <a className='cp' href='https://www.xampburn.com' target='_blank' rel='noopener noreferrer'>xampbburn.com</a> ported by <a className='cp' href='https://www.twitter.com/idiom_bytes' target='_blank' rel='noopener noreferrer'>Idiom</a><br/>
          </div>
       </div>
 
