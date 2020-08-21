@@ -4,6 +4,7 @@ import Loader from './images/loader';
 import Info from './Info';
 import Web3 from 'web3';
 import logo from './images/toblogo.jpeg'
+import twitter_dp from './images/twitter_icon.jpeg'
 import Twitter from './Twitter';
 import Links from './Links';
 import Icon from './images/flame'
@@ -92,8 +93,10 @@ const Body = (props) => {
         <div><a className='attLink' href='https://github.com/ethereum/web3.js/' target='_blank' rel='noopener noreferrer'>Ethereum data powered by Web3.js</a></div>
         <div><a className='attLink' href='https://coingecko.com' target='_blank' rel='noopener noreferrer'>Price Data powered by CoinGecko API</a></div>
         <div>
-            <a className='cp' href='https://twitter.com/GStauffy' target='_blank' rel='noopener noreferrer'>OG Code by GS</a> -
-            <a className='cp' href='https://twitter.com/idiom_bytes' target='_blank' rel='noopener noreferrer'>TOB port by Idiom</a>
+            <a className='cp' href='https://twitter.com/GStauffy' target='_blank' rel='noopener noreferrer'>OG Code by GS</a><br/>
+
+            <a href='https://www.twitter.com/idiom_bytes' target='_blank' rel='noopener noreferrer'><img className="twitter_img" alt="Idiom" src={twitter_dp}/></a><br/>
+            $TOB port by Idiom<br/>
          </div>
       </div>
 

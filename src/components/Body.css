@@ -39,6 +39,9 @@
 .swapDiv {
   margin-top:3%;
 }
+.twitter_img {
+  border-radius: 50%;
+}
 .uniswapLink {
   padding: 1.5% 2%;
   color: #333333;
