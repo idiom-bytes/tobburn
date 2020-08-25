@@ -60,13 +60,27 @@ p {
   font-weight:600;
   color:#4ad295;
 }
-
+.targetRebase {
+  background: #CCCCCC;
+  border-radius: .5rem;
+  padding:3%;
+  margin-top:5%;
+}
+.infoRebase {
+  font-weight: 600;
+  color: #424242;
+}
+.timerRebase {
+  font-size:1.4rem;
+  font-weight:600;
+  color:#89000A;
+}
 .infoP {
   font-weight: 600;
 }
 .rebaseButton {
-  padding:5% 0 3%;
-  margin: 8% 0 5%;
+  padding:3% 0 3%;
+  margin: 5% 0 5%;
   font-size: 1.3rem;
   background: #018786;
   color: whitesmoke;
@@ -82,6 +96,19 @@ p {
   border:2px solid #018786;
   color:#018786;
 }
+.rebaseButtonDisabled {
+  padding:3% 0 3%;
+  margin: 5% 0 5%;
+  font-size: 1.3rem;
+  background: #FF7A83;
+  color: #FFDBDE;
+  cursor: pointer;
+  outline: none;
+  border-radius: .5rem;
+  font-family:'Roboto',sans-serif;
+  border: 2px solid #FFDBDE;
+  transition:.4s;
+}
 .buttonIcon {
   width:60%;
   height:auto;
@@ -89,6 +116,15 @@ p {
   margin-top:-5%;
 
 }
+.innerLink:link, .innerLink:visited {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+.innerLink:hover {
+  color: #AAAAAA;
+  text-decoration: underline;
+}
+
 .innerButtonDiv {
   display:grid;
   grid-template-columns: .25fr .5fr .25fr;
@@ -124,9 +160,16 @@ p {
   .rebaseButton {
     padding:4% 0 2.5;
   }
+  .rebaseButtonDisabled {
+    padding:4% 0 2.5;
+  }
 }
 @media only screen and (min-width:768px) {
   .rebaseButton {
+    padding:3% 0 2%;
+    width:40%;
+  }
+  .rebaseButtonDisabled {
     padding:3% 0 2%;
     width:40%;
   }
@@ -150,7 +193,14 @@ p {
     font-size:1.5rem;
     width:50%;
   }
+  .rebaseButtonDisabled {
+    font-size:1.5rem;
+    width:50%;
+  }
   .innerPriceDiv {
+    margin:3% 6% 0
+  }
+  .targetRebase {
     margin:3% 6% 0
   }
   p {

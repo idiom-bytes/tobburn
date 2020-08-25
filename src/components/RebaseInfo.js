@@ -4,32 +4,23 @@ import commas from './functions/commas';
 import {logDonationClick} from "./GoogleAnalytics";
 
 const MoreInfo = (props) => {
-  const clicked = () => {
-    props.handleClick();
-  }
-  var dt = new Date(props.date);
-  var DD = ("0" + dt.getDate()).slice(-2);
-  var MM = ("0" + (dt.getMonth() + 1)).slice(-2);
-  var YYYY = dt.getFullYear();
-  var hh = ("0" + dt.getHours()).slice(-2);
-  var mm = ("0" + dt.getMinutes()).slice(-2);
-  var date_string =  + MM + "/" + DD + "/" + YYYY  + " at " + hh + ":" + mm;
   return(
-    <div className='moreInfoDiv' onClick={clicked}>
+    <div className='moreInfoDiv'>
       <p>
         <h3>Why are you here?</h3>
-        TOB's [Rebase Function] below triggers the [Coin Burn].<br/>
-        Every 12 hours the [Rebase Function] can be called.
+        TOB's [Rebase Function] powers the token's mechanisms.<br/>
+        To trigger [Rebase Function] press the button below.
       </p>
       <p>
-        <h3>TOB Mechanisms</h3>
-        [IF] [Current Price] is greater than Historical All-Time-High [Burn-Target Price]<br/>
-        [THEN] 1% of [Total TOB Supply] is destroyed<br/>
-        [ELSE] Reduce [Burn-Target Price]
+        <h3>Token Mechanisms</h3>
+        [IF] [Current Price] > [Rebase Target Price]<br/>
+        [OR] [Current Time] > [Last Rebase Date + 12 hours]<br/>
+        [THEN] You can trigger [Rebase Function]
       </p>
       <p>
-        Next [Rebase Function] is able to be triggered on {date_string}.<br/>
-        If these conditions are met, TODO - Live @ $TOB will be burned.
+        [IF] [Current Price] > [Rebase Target Price]<br/>
+        [THEN] 1% of [Total TOB Supply] is destroyed.<br/>
+        [ELSE] [Rebase Target Price] = [Current Price + 10%]
       </p>
       <h5>
         Support & Donations<br/><br/>
