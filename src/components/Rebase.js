@@ -94,6 +94,10 @@ class Rebase extends Component {
         await tobContract.methods.timeBetweenRebases().call()
         .then(async (res) => {
             var timeBetweenRebases = res;
+
+            // TODO - Enable verify metamask/button works
+            // TODO - Revert nextRebaseDate below
+            // TODO - Delete the lines that override nextRebase + add 10 seconds
 //            var nextRebaseDate = this.state.tob_lastRebaseDate.clone();
             var nextRebaseDate = moment(new Date())
             nextRebaseDate.add(10, 'seconds')
