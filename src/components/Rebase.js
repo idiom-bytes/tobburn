@@ -21,7 +21,6 @@ const abi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{
 // rebaseAddress: '0x68d95dfcd2916cf76a72d1dee5b7bcecf14adb44',
 const rebaseAddress = '0x68D95Dfcd2916cf76a72d1dEe5b7BcEcf14aDb44';
 
-
 //const Rebase = (props) => {
 class Rebase extends Component {
     constructor(props) {
@@ -44,6 +43,7 @@ class Rebase extends Component {
             hash: '',
             success: '',
             timeout: 0,
+            metamaskInstalled: false,
             ethereumEnabled: false,
         }
     };
@@ -95,12 +95,11 @@ class Rebase extends Component {
         .then(async (res) => {
             var timeBetweenRebases = res;
 
-            // TODO - Enable verify metamask/button works
-            // TODO - Revert nextRebaseDate below
-            // TODO - Delete the lines that override nextRebase + add 10 seconds
-//            var nextRebaseDate = this.state.tob_lastRebaseDate.clone();
-            var nextRebaseDate = moment(new Date())
-            nextRebaseDate.add(10, 'seconds')
+            var nextRebaseDate = this.state.tob_lastRebaseDate.clone();
+
+            // DEBUG LOGIC TO SIMULATE REBASE COUNTDOWN
+            // var nextRebaseDate = moment(new Date())
+            // nextRebaseDate.add(10, 'seconds')
 
             var lastRebaseDateString = this.state.tob_lastRebaseDate.format('MM/DD/YYYY HH:mm:ss');
             var nextRebaseDateString = nextRebaseDate.format('MM/DD/YYYY HH:mm:ss');
@@ -122,14 +121,14 @@ class Rebase extends Component {
         this.setState({
             tob_canRebaseDate: now.getTime() > this.state.tob_nextRebaseDate,
             tob_canRebasePrice: this.state.tob_currentExchangeRate > this.state.tob_lastExchangeRate,
-            tob_canRebase: this.state.tob_canRebaseDate == true || this.state.tob_canRebasePrice == true
+            tob_canRebase: this.state.tob_canRebaseDate === true || this.state.tob_canRebasePrice === true
         })
         console.log('TOB-canRebaseDate: ', this.state.tob_canRebaseDate);
         console.log('TOB-canRebasePrice: ', this.state.tob_canRebasePrice);
         console.log('TOB-canRebase: ', this.state.tob_canRebase);
     };
 
-        setTimeOut = () => {
+    setTimeOut = () => {
         this.setState({
             msg: '',
             timeout: 10000
@@ -137,51 +136,80 @@ class Rebase extends Component {
     }
 
     callRebase = () => {
+        const diffTime = this.state.tob_nextRebaseDate ? this.state.tob_nextRebaseDate.toDate() - new Date() : new Date()
+        const duration = moment.duration(diffTime)
+
         if (window.ethereum) {
-          if (window.web3.currentProvider.isMetaMask) {
-            if (this.state.tob_canRebase) {
-              const transactionParameters = {
-                to: rebaseAddress,
-                from: window.ethereum.selectedAddress,
-                data:'0xaf14052c',
-              }
-              window.ethereum.request({method:'eth_sendTransaction',params:[transactionParameters]})
-                .then(res => {
-                  console.log(res)
-                  this.setState({
-                    msg:'View transaction here.',
-                    hash:res,
-                    success:true
-                  });
-                })
-                .catch(err => {
-                  console.log(err);
-                  this.setState({
-                    msg:'Failed to go through.',
-                    timeout: 10000
-                  });
-                })
+            if (window.web3.currentProvider.isMetaMask && window.ethereum.selectedAddress !== null) {
+                if (this.state.tob_canRebase || duration.asSeconds() < 0.0) {
+                    const transactionParameters = {
+                        to: rebaseAddress,
+                        from: window.ethereum.selectedAddress,
+                        data: '0xaf14052c',
+                    }
+                    window.ethereum.request({method: 'eth_sendTransaction', params: [transactionParameters]})
+                        .then(res => {
+                            console.log(res)
+                            this.setState({
+                                msg: 'View transaction here.',
+                                hash: res,
+                                success: true
+                            });
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            this.setState({
+                                msg: 'Failed to go through.',
+                                timeout: 10000
+                            });
+                        })
+                } else {
+                    this.setState({
+                        msg: 'You must wait until the timer above is expired.',
+                        timeout: 10000
+                    });
+                }
             } else {
-               this.setState({
-                 msg:'You must wait until the timer above is expired.',
-                 timeout: 10000
-               });
+                console.log()
+                this.connectMetaMask();
             }
-          }
-          else {
-            this.setState({msg:'You must connect to metamask.'})
-          }
         } else {
-          this.setState({msg:'You must connect to metamask.'})
+            this.connectMetaMask();
         }
     };
 
-    componentDidUpdate() {
+    connectMetaMask = () => {
         if (window.ethereum) {
             window.web3 = new Web3(window.ethereum);
             window.ethereum.enable();
         }
-    }
+    };
+
+    getRebaseButton = () => {
+        if (typeof window.ethereum === 'undefined') {
+            return (
+                <div className='targetRebase'>
+                    <a className='metamaskLink' href='https://metamask.io/'>Please install Metamask and reload page</a>
+                </div>
+            )
+        } else {
+            if( window.ethereum.selectedAddress === null ) {
+                return (
+                    <div>
+                        <button className='rebaseButton' onClick={this.connectMetaMask}>
+                            Please connect to Metamask
+                        </button>
+
+                        <Timer data={this.state} callRebase={this.callRebase}/>
+                    </div>
+                )
+            } else {
+                return (
+                    <Timer data={this.state} callRebase={this.callRebase}/>
+                )
+            }
+        }
+    };
 
     render() {
       return(
@@ -210,7 +238,7 @@ class Rebase extends Component {
                 </div>
             </div>
 
-            <Timer data={this.state} end={this.state.tob_nextRebaseDate != null ? this.state.tob_nextRebaseDate.toDate() : null} />
+            {this.getRebaseButton()}
         </div>
       )
     }

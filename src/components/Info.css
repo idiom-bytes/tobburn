@@ -124,6 +124,16 @@ p {
   color: #AAAAAA;
   text-decoration: underline;
 }
+.metamaskLink:link, .metamaskLink:visited {
+  font-size:1.4rem;
+  color: #89000A;
+  text-decoration: underline;
+}
+.metamaskLink:hover {
+  font-size:1.4rem;
+  color: #89000A;
+  text-decoration: underline;
+}
 
 .innerButtonDiv {
   display:grid;

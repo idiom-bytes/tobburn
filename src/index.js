@@ -10,6 +10,7 @@ import {initGA, logPageView} from "./components/GoogleAnalytics";
 
 firebase.initializeApp(firebaseConfig)
 const firebaseAnalytics = firebase.analytics();
+const ga = initGA();
 
 ReactDOM.render(
   <React.StrictMode>
