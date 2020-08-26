@@ -31,22 +31,16 @@ const Body = (props) => {
       {/* COMMUNITY BLOCK */}
       <div className='buttonDiv'>
       <div className='swapDiv'>
-        <a className='uniswapLink' href='https://app.uniswap.org/#/swap?outputCurrency=0x7777770f8A6632ff043c8833310e245EBa9209E6' target='_blank' rel='noopener noreferrer'>Buy $TOB</a>
+        <a className='uniswapLink' href='https://app.uniswap.org/#/swap?outputCurrency=0x7777770f8A6632ff043c8833310e245EBa9209E6' target='_blank' rel='noopener noreferrer'>Buy TOB</a>
+        <a className='uniswapLink' href='https://www.chartex.pro/?symbol=UNISWAP:TOB' target='_blank' rel='noopener noreferrer'>TOB Chart</a>
       </div>
       </div>
       <div>
         <Links />
       </div>
 
-      {/* TWITTER FEED HTML */}
-      <div className='socialDiv'>
-        <Twitter />
-      </div>
-
       {/* FOOT HTML */}
       <div className='footDiv'>
-        <br/>
-        <br/>
         <div>Credit</div>
         <div><a className='attLink' href='https://github.com/ethereum/web3.js/' target='_blank' rel='noopener noreferrer'>Ethereum data powered by Web3.js</a></div>
         <div><a className='attLink' href='https://coingecko.com' target='_blank' rel='noopener noreferrer'>Price Data powered by CoinGecko API</a></div>

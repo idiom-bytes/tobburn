@@ -94,8 +94,9 @@ class Rebase extends Component {
         await tobContract.methods.timeBetweenRebases().call()
         .then(async (res) => {
             var timeBetweenRebases = res;
-            var nextRebaseDate = this.state.tob_lastRebaseDate.clone();
-            nextRebaseDate.add(timeBetweenRebases, 'seconds');
+//            var nextRebaseDate = this.state.tob_lastRebaseDate.clone();
+            var nextRebaseDate = moment(new Date())
+            nextRebaseDate.add(10, 'seconds')
 
             var lastRebaseDateString = this.state.tob_lastRebaseDate.format('MM/DD/YYYY HH:mm:ss');
             var nextRebaseDateString = nextRebaseDate.format('MM/DD/YYYY HH:mm:ss');
@@ -117,7 +118,7 @@ class Rebase extends Component {
         this.setState({
             tob_canRebaseDate: now.getTime() > this.state.tob_nextRebaseDate,
             tob_canRebasePrice: this.state.tob_currentExchangeRate > this.state.tob_lastExchangeRate,
-            tob_canRebase: this.state.tob_canRebaseDate || this.state.tob_canRebasePrice
+            tob_canRebase: this.state.tob_canRebaseDate == true || this.state.tob_canRebasePrice == true
         })
         console.log('TOB-canRebaseDate: ', this.state.tob_canRebaseDate);
         console.log('TOB-canRebasePrice: ', this.state.tob_canRebasePrice);
@@ -178,40 +179,8 @@ class Rebase extends Component {
         }
     }
 
-    getRebaseButton = () => {
-        if(this.state.tob_canRebase) {
-            return (
-                <button className='rebaseButton' onClick={this.callRebase}>
-                    <div className='innerButtonDiv'>
-                        <div></div>
-                            <span className='rebaseSpan'>Call Rebase</span>
-                        <div></div>
-                    </div>
-                </button>
-            )
-        }
-        else {
-            return (
-                <button className='rebaseButtonDisabled' disabled>
-                    <div className='innerButtonDiv'>
-                        <div></div>
-                            <span className='rebaseSpan'>Rebase Disabled</span>
-                        <div></div>
-                    </div>
-                </button>
-            )
-        }
-    }
-
     render() {
       return(
-
-    //    {data.stack > 0 ?
-    //      <div className='lineDiv'><p className='burnP'><span>{commas((data.stack/1000000000).toFixed(3))}</span> $TOB in your MetaMask.</p></div> :
-    //      null
-    //    }
-    //    {!price.fetch ? null :
-
         <div className='rebaseDiv'>
 
             {/* Rebase Description + Selling Myself = Drummond's Slut */}
@@ -238,8 +207,6 @@ class Rebase extends Component {
             </div>
 
             <Timer data={this.state} end={this.state.tob_nextRebaseDate != null ? this.state.tob_nextRebaseDate.toDate() : null} />
-
-            <this.getRebaseButton />
         </div>
       )
     }
