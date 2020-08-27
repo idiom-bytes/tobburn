@@ -174,11 +174,12 @@ class Rebase extends Component {
                     });
                 }
             } else {
-                console.log()
+                // If ethereum/web3 is enabled, we should be able to turn on Metamask
                 this.connectMetaMask();
             }
         } else {
-            this.connectMetaMask();
+            // If etherum/web3 is not enabled, send them to metamask
+            window.open('https://metamask.io/')
         }
     };
 
@@ -192,15 +193,21 @@ class Rebase extends Component {
     getRebaseButton = () => {
         if (typeof window.ethereum === 'undefined') {
             return (
-                <div className='targetRebase'>
-                    <a className='metamaskLink' href='https://metamask.io/'>Please install Metamask and reload page</a>
+                <div>
+                    <a href='https://metamask.io/' target='_blank' rel='noopener noreferrer'>
+                        <button className='rebaseButtonDisabled' onClick={this.connectMetaMask}>
+                            Please install Metamask and reload
+                        </button>
+                    </a>
+
+                    <Timer data={this.state} callRebase={this.callRebase}/>
                 </div>
             )
         } else {
             if( window.ethereum.selectedAddress === null ) {
                 return (
                     <div>
-                        <button className='rebaseButton' onClick={this.connectMetaMask}>
+                        <button className='rebaseButton' disabled>
                             Please connect to Metamask
                         </button>
 
