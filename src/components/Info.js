@@ -84,13 +84,12 @@ class Info extends Component {
 
                     <h4>
                         Supply Adjusted: {commas(this.state.remaining_total_supply.toFixed(2))}<br/>
-                        Supply Burned: {commas(this.state.remaining_burned_supply.toFixed(2))}<br/>
+                        Supply Burned: {commas(this.state.remaining_burned_supply.toFixed(2))} ({((this.state.remaining_burned_supply/this.state.remaining_total_supply)*100).toFixed(2)}%)<br/>
                         Supply Vested: {commas((this.state.remaining_vested_1_supply + this.state.remaining_vested_2_supply).toFixed(2))}<br/>
                         Supply Remaining: {commas((this.state.remaining_total_supply -
                                                     (this.state.remaining_burned_supply +
                                                      this.state.remaining_vested_1_supply +
                                                      this.state.remaining_vested_2_supply)).toFixed(2))}<br/>
-                        Burned Supply {((this.state.remaining_burned_supply/this.state.remaining_total_supply)*100).toFixed(2)}%
                     </h4>
 
                     <h5>
