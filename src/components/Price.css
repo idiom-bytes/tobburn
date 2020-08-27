@@ -1,0 +1,190 @@
+.xPriceDiv{
+  margin:auto;
+  margin-bottom: 8%;
+  margin-top:7%;
+  width:80%;
+}
+.xPriceTopDiv {
+  background: #242429;
+  width: 100%;
+  padding:1%;
+  border-radius: .5rem;
+}
+.xPriceTitle {
+  font-size:1.7rem;
+  font-weight: 600;
+  margin-bottom: -5%;
+}
+.hiLoDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap:10px;
+  row-gap:10px;
+  margin-bottom:2%;
+  padding: 2%;
+}
+.changeDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+}
+.changeInnerDiv {
+  background: #242429;
+  border-radius: .5rem;
+  line-height: 1;
+}
+.hiLoInnerDiv {
+  background: #242429;
+  border-radius: .5rem;
+  line-height: 1;
+}
+.hiLoP, .changeP, .totalVolume {
+  text-align:center;
+  font-size:1.35rem;
+  color:#fc8f53;
+  font-weight: 550;
+}
+.titleP {
+  font-size:1.25rem;
+  color:whitesmoke;
+}
+.price {
+  color:#fc8f53;
+  font-size:2.35rem;
+  font-weight: 550;
+}
+
+/* Currency button styling */
+.currButtDiv {
+  display:grid;
+  grid-template-columns: 1fr 80px 1fr;
+  grid-template-areas: "left middle right"
+}
+.currWrapper {
+  grid-area:"middle";
+  /* border-radius: .5rem .5rem 0 0; */
+}
+.spanDiv {
+  width:100%;
+  /* border-radius: .5rem; */
+}
+.currDrop {
+  display: grid;
+  grid-template-columns: 1fr;
+  box-sizing: border-box;
+  position:absolute;
+  background: #60606c;
+  border:1px solid black;
+  max-height:155px;
+  width:80px;
+  overflow-y: scroll;
+  border: none;
+  /* border-radius: 0 0 .5rem .5rem; */
+}
+.displayCurrency{
+  background: #60606c;
+  /* border-radius: .5rem .5rem 0 0; */
+  border:1px solid black;
+  padding:10%;
+  color: black;
+  cursor:pointer;
+  color: whitesmoke;
+  /* width:80px; */
+  font-size:.9rem;
+  margin:auto;
+  border:none;
+  text-align: center;
+  border-bottom: 1px solid #18181b;
+}
+.displayCurrency:hover {
+  background: #787887;
+}
+.curLI {
+  color: whitesmoke;
+  text-align: center;
+  padding: 10px 12px;
+  cursor:pointer;
+  float: left;
+  transition:.3s;
+  margin: 0;
+}
+.curLI:hover {
+  background: #787887;
+}
+
+@media only screen and (min-width:760px) {
+  .currButtDiv {
+    grid-template-columns: 1fr 100px 1fr;
+  }
+  .currDrop {
+    width:100px
+  }
+  .displayCurrency {
+    font-size:1rem;
+  }
+  .xPriceDiv {
+    width:70%;
+  }
+  .xPriceTopDiv {
+    width:100%;
+    margin:auto;
+  }
+  .price {
+    font-size:2.5rem;
+  }
+}
+@media only screen and (min-width:760px) and (min-height:1000px) {
+  .xPriceDiv {
+    width:60%;
+    margin-bottom: 15%;
+  }
+  .hiLoP, .changeP, .totalVolume {
+    font-size:2.2rem;
+  }
+  .titleP, .xPriceTitle {
+    font-size:2rem;
+  }
+}
+@media only screen and (min-width:900px) {
+  .xPriceTopDiv {
+    width:80%;
+  }
+  .hiLoP, .changeP, .totalVolume {
+    font-size:1.75rem;
+  }
+  .titleP{
+    font-size:1.6rem;
+  }
+  .xPriceTitle {
+    font-size:2rem;
+  }
+}
+@media only screen and (min-width:1000px) and (min-height:1300px) {
+  .xPriceTitle {
+    font-size:3rem;
+  }
+  .hiLoP, .changeP, .totalVolume {
+    font-size:2.9rem;
+  }
+  .titleP, .xPriceTitle {
+    font-size:2.6rem;
+  }
+  .price {
+    font-size:3.5rem;
+  }
+}
+
+@media only screen and (min-width:1300px) {
+  .xPriceTopDiv {
+    width:60%;
+  }
+  .xPriceTitle {
+    font-size:2.2rem;
+  }
+  .hiLoP, .changeP, .totalVolume {
+    font-size:1.8rem;
+  }
+  .titleP, .xPriceTitle {
+    font-size:1.65rem;
+  }
+}

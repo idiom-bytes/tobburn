@@ -5,7 +5,8 @@ import Timer from './Timer';
 import moment from 'moment'
 import RebaseInfo from './RebaseInfo';
 import './Info.css';
-import Icon from './images/flame'
+import Price from './Price';
+
 //import fetchData from './functions/fetchCoinGecko';
 
 // const firebaseFunctions = require('firebase-functions')
@@ -95,7 +96,10 @@ class Rebase extends Component {
         .then(async (res) => {
             var timeBetweenRebases = res;
 
+            console.log('this.state.tob_lastRebaseDate ', this.state.tob_lastRebaseDate)
+
             var nextRebaseDate = this.state.tob_lastRebaseDate.clone();
+            nextRebaseDate.add(timeBetweenRebases, 'seconds')
 
             // DEBUG LOGIC TO SIMULATE REBASE COUNTDOWN
             // var nextRebaseDate = moment(new Date())
@@ -239,6 +243,8 @@ class Rebase extends Component {
             </div>
 
             {this.getRebaseButton()}
+
+            <Price />
         </div>
       )
     }
