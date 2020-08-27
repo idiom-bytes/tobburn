@@ -19,6 +19,8 @@ class Info extends Component {
             supply_burned: 2000000,
             supply_vested: 601815.16,
             remaining_total_supply: 0,
+            remaining_vested_1_supply: 0,
+            remaining_vested_2_supply: 0,
             remaining_burned_supply: 0
         };
     }
@@ -28,6 +30,8 @@ class Info extends Component {
     async componentDidMount() {
         const token_supply_request = `https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=${appValues['CONTRACT_TOB_0x']}&apikey=${secrets['ETHERSCAN_API_KEY']}`;
         const burned_supply_request = `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=${appValues['CONTRACT_TOB_0x']}&address=${appValues['CONTRACT_BURN_0x']}&tag=latest&apikey=${secrets['ETHERSCAN_API_KEY']}`;
+        const vested_supply_1_request = `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=${appValues['CONTRACT_TOB_0x']}&address=${appValues['CONTRACT_TOB_VESTED_1_0x']}&tag=latest&apikey=${secrets['ETHERSCAN_API_KEY']}`;
+        const vested_supply_2_request = `https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=${appValues['CONTRACT_TOB_0x']}&address=${appValues['CONTRACT_TOB_VESTED_2_0x']}&tag=latest&apikey=${secrets['ETHERSCAN_API_KEY']}`;
 
         await axios.get(token_supply_request)
             .then(res => {
@@ -41,6 +45,22 @@ class Info extends Component {
             .then(res => {
                 this.setState({
                     remaining_burned_supply: res.data.result / Math.pow(10,appValues['CONTRACT_TOB_DECIMALS'])
+                });
+                console.log(res.data.result);
+            });
+
+        await axios.get(vested_supply_1_request)
+            .then(res => {
+                this.setState({
+                    remaining_vested_1_supply: res.data.result / Math.pow(10,appValues['CONTRACT_TOB_DECIMALS'])
+                });
+                console.log(res.data.result);
+            });
+
+        await axios.get(vested_supply_2_request)
+            .then(res => {
+                this.setState({
+                    remaining_vested_2_supply: res.data.result / Math.pow(10,appValues['CONTRACT_TOB_DECIMALS'])
                 });
                 console.log(res.data.result);
             });
@@ -63,8 +83,13 @@ class Info extends Component {
                     </h4>
 
                     <h4>
-                        Remaining Supply: {commas(this.state.remaining_total_supply.toFixed(2))}<br/>
-                        Burned Supply: {commas(this.state.remaining_burned_supply.toFixed(2))}<br/>
+                        Supply Adjusted: {commas(this.state.remaining_total_supply.toFixed(2))}<br/>
+                        Supply Burned: {commas(this.state.remaining_burned_supply.toFixed(2))}<br/>
+                        Supply Vested: {commas((this.state.remaining_vested_1_supply + this.state.remaining_vested_2_supply).toFixed(2))}<br/>
+                        Supply Remaining: {commas((this.state.remaining_total_supply -
+                                                    (this.state.remaining_burned_supply +
+                                                     this.state.remaining_vested_1_supply +
+                                                     this.state.remaining_vested_2_supply)).toFixed(2))}<br/>
                         Burned Supply {((this.state.remaining_burned_supply/this.state.remaining_total_supply)*100).toFixed(2)}%
                     </h4>
 
