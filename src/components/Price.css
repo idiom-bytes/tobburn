@@ -41,7 +41,7 @@
 .hiLoP, .changeP, .totalVolume {
   text-align:center;
   font-size:1.35rem;
-  color:#fc8f53;
+  color:#4ad295;
   font-weight: 550;
 }
 .titleP {
@@ -49,7 +49,7 @@
   color:whitesmoke;
 }
 .price {
-  color:#fc8f53;
+  color:#4ad295;
   font-size:2.35rem;
   font-weight: 550;
 }
